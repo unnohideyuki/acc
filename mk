@@ -1,17 +1,17 @@
 #!/bin/sh
 # -*- mode:Shell -*-
 
-which scs > /dev/null
+which csc > /dev/null
 if [ $? -eq 0 ]; then
-  compiler="scs"
-fi
-
-which mcs > /dev/null
-if [ $? -eq 0 ]; then
-    compiler="mcs"
+  compiler="csc"
 else
-    echo "compiler, scs or mcs, not found."
-    exit 1;
+    which mcs > /dev/null
+    if [ $? -eq 0 ]; then
+	compiler="mcs"
+    else
+	echo "compiler, scs or mcs, not found."
+	exit 1;
+    fi
 fi
 
 cmd="$compiler $1"
