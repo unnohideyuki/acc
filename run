@@ -1,0 +1,26 @@
+#!/bin/sh
+# -*- mode:Shell -*-
+
+c=$1
+
+echo testing $c
+
+i=1
+while [ -f input$i ]
+do
+    echo -n test $i "..."
+    $c < input$i > actual$i
+    diff actual$i expected$i
+    if [ $? -eq 0 ];then
+	echo " passed."
+    else
+	echo " failed."
+	exit 1
+    fi
+    i=`expr $i \+ 1`
+done
+
+echo ----------------
+echo Passed $i tests.
+echo ----------------
+
