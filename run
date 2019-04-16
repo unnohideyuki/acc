@@ -5,6 +5,7 @@ c=$1
 
 echo testing $c
 
+passed=0
 i=1
 while [ -f input$i ]
 do
@@ -18,9 +19,10 @@ do
 	exit 1
     fi
     i=`expr $i \+ 1`
+    passed=`expr $passed \+ 1`
 done
 
 echo ----------------
-echo Passed $i tests.
+echo Passed $passed tests.
 echo ----------------
 
