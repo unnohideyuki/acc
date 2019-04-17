@@ -11,7 +11,7 @@ while [ -f input$i ]
 do
     echo -n test $i "..."
     $c < input$i > actual$i
-    diff actual$i expected$i
+    diff -w actual$i expected$i
     if [ $? -eq 0 ];then
 	echo " passed."
     else
