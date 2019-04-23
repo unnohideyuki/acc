@@ -51,15 +51,30 @@ class Program
 	foreach (int v0 in h0.Keys)
 	{
 	    int f = h0[v0];
-	    if      (f > maxf0)   { mfv0 = v0; maxf0 = f; }
-	    else if (f > secondf0){ secondf0 = f; }
+	    if (f > maxf0){
+		secondf0 = maxf0;
+		mfv0 = v0;
+		maxf0 = f;
+	    }
+	    else if (f > secondf0)
+	    {
+		secondf0 = f;
+	    }
 	}
 
 	foreach (int v1 in h1.Keys)
 	{
 	    int f = h1[v1];
-	    if      (f > maxf1)   { mfv1 = v1; maxf1 = f; }
-	    else if (f > secondf1){ secondf1 = f; }
+	    if (f > maxf1)
+	    {
+		secondf1 = maxf1;
+		mfv1 = v1;
+		maxf1 = f;
+	    }
+	    else if (f > secondf1)
+	    {
+		secondf1 = f;
+	    }
 	}
 
 	int ans;
