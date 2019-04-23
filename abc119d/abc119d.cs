@@ -24,6 +24,26 @@ class MyUtil
     }
 }
 
+class Bisect
+{
+    /* BisectRight(a, x) returns the index where to insert x in a sorted list a.
+     * 
+     * The return value i is such that for all 0 < j < i, a[j] <= x and
+     * for all j > i, a[j] > x.
+     */
+    public static int BisectRight<T>(T[] a, T x) where T : IComparable
+    {
+	int lo = 0, hi = a.Length;
+	while (lo < hi)
+	{
+	    int mid = (lo + hi) / 2;
+	    if (x.CompareTo(a[mid]) < 0) { hi = mid; }
+	    else { lo = mid + 1; }
+	}
+	return lo;
+    }
+}
+
 class Program
 {
     public static void Main()
@@ -40,13 +60,22 @@ class Program
 	var t = new long[b+2];
 	var x = new long[q];
 
-	for (int i = 1; i <= a; i++){ s[i] = long.Parse(ReadLine()); }
 	s[0] = -MAX; s[a+1] = MAX;
+	for (int i = 1; i <= a; i++)
+	{
+	    s[i] = long.Parse(ReadLine());
+	}
 	
-	for (int i = 1; i <= b; i++){ t[i] = long.Parse(ReadLine()); }
 	t[0] = -MAX; t[b+1] = MAX;
+	for (int i = 1; i <= b; i++)
+	{
+	    t[i] = long.Parse(ReadLine());
+	}
 
-	for (int i = 0; i < q; i++){ x[i] = long.Parse(ReadLine()); }
+	for (int i = 0; i < q; i++)
+	{
+	    x[i] = long.Parse(ReadLine());
+	}
 
 	for (int i = 0; i < q; i++)
 	{
@@ -55,40 +84,14 @@ class Program
 	}
     }
 
-    // return i that satisfies a[i] < x <= a[i+1]
-    static int Search(long[] a, long x)
-    {
-	int l = 0, r = a.Length - 2;
-
-	while(true)
-	{
-	    if (l > r){ return -1; } // Must not occur in this program.
-
-	    int m = (l + r) / 2;
-
-	    if (a[m]  >= x)
-	    {
-		r = m - 1;
-	    }
-	    else if (a[m+1] < x)
-	    {
-		l = m + 1;
-	    }
-	    else
-	    {
-		return m;
-	    }
-	}
-    }
-       
     static long Solve(long[] s, long[] t, long x)
     {
 	long ans = 1000000000000;
 
 	long sl, sr, tl, tr;
 
-	int i = Search(s, x); sl = s[i]; sr = s[i+1];
-	int j = Search(t, x); tl = t[j]; tr = t[j+1];
+	int i = Bisect.BisectRight(s, x); sl = s[i-1]; sr = s[i];
+	int j = Bisect.BisectRight(t, x); tl = t[j-1]; tr = t[j];
 	
 	ans = Math.Max(sr, tr) - x;
 
@@ -107,5 +110,4 @@ class Program
 
 	return ans;
     }
-			    
 }
