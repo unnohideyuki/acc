@@ -1,0 +1,22 @@
+// -*- mode:CSharp -*-
+#include "MyUtil.cs"
+
+class Bisect
+{
+    /* BisectRight(a, x) returns the index where to insert x in a sorted list a.
+     * 
+     * The return value i is such that for all 0 < j < i, a[j] <= x and
+     * for all j >= i, a[j] > x.
+     */
+    public static int BisectRight<T>(T[] a, T x) where T : IComparable
+    {
+	int lo = 0, hi = a.Length;
+	while (lo < hi)
+	{
+	    int mid = (lo + hi) / 2;
+	    if (x.CompareTo(a[mid]) < 0) { hi = mid; }
+	    else { lo = mid + 1; }
+	}
+	return lo;
+    }
+}
