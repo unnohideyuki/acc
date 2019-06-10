@@ -42,6 +42,14 @@ class MyUtil
 	b = t;
     }
 
+    public static void WarshallFloyd(int[,] d, int v)
+    {
+	for (int k = 0; k < v; k++)
+	    for (int i = 0; i < v; i++)
+		for (int j = 0; j < v; j++)
+		    d[i, j] = Math.Min(d[i, j], d[i, k] + d[k, j]);
+    }
+    
     public static int[] ReadIntArray()
     {
 	return ReadLine().Split().Select(x => int.Parse(x)).ToArray();
