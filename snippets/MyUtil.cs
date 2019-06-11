@@ -49,6 +49,26 @@ class MyUtil
 		for (int j = 0; j < v; j++)
 		    d[i, j] = Math.Min(d[i, j], d[i, k] + d[k, j]);
     }
+
+    public static bool NextPermutation<T>(T[] a) where T : IComparable
+    {
+	if (a.Length <= 1) return false;
+
+	for (int i = a.Length - 1; i > 0; i--)
+	{
+	    int k = i - 1;
+	    if (a[k].CompareTo(a[i]) < 0)
+	    {
+		int j = a.Length - 1;
+		while (a[k].CompareTo(a[j]) >= 0){ j--; }
+		Swap(ref a[k], ref a[j]);
+		Array.Reverse(a, i, a.Length - i);
+		return true;
+	    }
+	}
+	Array.Reverse(a);
+	return false;
+    }
     
     public static int[] ReadIntArray()
     {
