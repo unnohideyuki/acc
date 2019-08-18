@@ -14,9 +14,9 @@ public class Program
         Q.Push(2);
         Q.Push(1);
 
-        Console.WriteLine(Q.Pop());
-        Console.WriteLine(Q.Pop());
-        Console.WriteLine(Q.Pop());
-        Console.WriteLine(Q.Pop());
+        AssertEquals(3, Q.Pop());
+        AssertEquals(2, Q.Pop());
+        AssertEquals(1, Q.Pop());
+        AssertEquals(1, Q.Pop());
     }
 }

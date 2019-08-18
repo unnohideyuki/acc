@@ -1,5 +1,5 @@
 TEMPORARY = Bisect.cs
-TESTS = TestBisect TestWF TestNextPermutation
+TESTS = TestBisect TestWF TestNextPermutation TestPriorityQueue
 
 all:	$(TESTS)
 
@@ -16,6 +16,9 @@ TestNextPermutation: TestNextPermutation.cs MyUtil.cs genperm.cpp
 	g++ -o genperm genperm.cpp
 	./genperm > testperm.txt
 	./compile TestNextPermutation.cs MyUtil.cs
+
+TestPriorityQueue: TestPriorityQueue.cs MyUtil.cs PriorityQueue.cs
+	./compile TestPriorityQueue.cs MyUtil.cs PriorityQueue.cs
 
 clean:
 	rm -f $(TEMPORARY) $(TESTS)
