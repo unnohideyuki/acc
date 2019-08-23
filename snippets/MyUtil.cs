@@ -80,7 +80,7 @@ class MyUtil
 	return false;
     }
     
-    public static int PopulationCount(int x)
+    public static int PopulationCount(uint x)
     {
 	x = (x & 0x55555555) + (x >> 1 & 0x55555555);
 	x = (x & 0x33333333) + (x >> 2 & 0x33333333);
