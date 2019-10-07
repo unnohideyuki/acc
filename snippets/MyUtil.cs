@@ -52,6 +52,26 @@ class MyUtil
 	b = t;
     }
 
+    public static bool ChMin<T>(ref T a, T b)
+    {
+	if (a > b)
+	{
+	    a = b;
+	    return true;
+	}
+	return false;
+    }
+    
+    public static bool ChMax<T>(ref T a, T b)
+    {
+	if (a < b)
+	{
+	    a = b;
+	    return true;
+	}
+	return false;
+    }
+    
     public static void WarshallFloyd(int[,] d, int v)
     {
 	for (int k = 0; k < v; k++)
@@ -87,5 +107,17 @@ class MyUtil
 	x = (x & 0x0f0f0f0f) + (x >> 4 & 0x0f0f0f0f);
 	x = (x & 0x00ff00ff) + (x >> 8 & 0x00ff00ff);
 	return (x & 0x0000ffff) + (x >>16 & 0x0000ffff);
+    }
+
+    public static void AutoFlushOff()
+    {
+	var sw =
+	    new StreamWriter(Console.OpenStandardOutput()){AutoFlush = false};
+	Console.SetOut(sw);
+    }
+
+    public static void Flush()
+    {
+	Console.Out.Flush();
     }
 }
