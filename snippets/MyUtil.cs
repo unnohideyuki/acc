@@ -52,9 +52,9 @@ class MyUtil
 	b = t;
     }
 
-    public static bool ChMin<T>(ref T a, T b)
+   public static bool ChMin<T>(ref T a, T b) where T : IComparable
     {
-	if (a > b)
+	if (a.CompareTo(b) > 0)
 	{
 	    a = b;
 	    return true;
@@ -62,16 +62,16 @@ class MyUtil
 	return false;
     }
     
-    public static bool ChMax<T>(ref T a, T b)
+    public static bool ChMax<T>(ref T a, T b) where T : IComparable
     {
-	if (a < b)
+	if (a.CompareTo(b) < 0)
 	{
 	    a = b;
 	    return true;
 	}
 	return false;
     }
-    
+
     public static void WarshallFloyd(int[,] d, int v)
     {
 	for (int k = 0; k < v; k++)
