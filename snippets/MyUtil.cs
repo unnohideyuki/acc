@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using static System.Console;
@@ -100,7 +101,7 @@ class MyUtil
 	return false;
     }
     
-    public static int PopulationCount(uint x)
+    public static int PopulationCount(int x)
     {
 	x = (x & 0x55555555) + (x >> 1 & 0x55555555);
 	x = (x & 0x33333333) + (x >> 2 & 0x33333333);
