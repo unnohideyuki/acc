@@ -8,9 +8,10 @@ class Bisect
      * The return value i is such that for all 0 < j < i, a[j] <= x and
      * for all j >= i, a[j] > x.
      */
-    public static int BisectRight<T>(T[] a, T x) where T : IComparable
+    public static
+	int BisectRight<T>(T[] a, T x, int lo=0, int hi=-1) where T:IComparable
     {
-	int lo = 0, hi = a.Length;
+	if (hi < 0)  hi = a.Length;
 	while (lo < hi)
 	{
 	    int mid = (lo + hi) / 2;
@@ -19,4 +20,5 @@ class Bisect
 	}
 	return lo;
     }
+								    
 }

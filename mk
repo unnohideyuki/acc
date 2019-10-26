@@ -9,7 +9,7 @@ else
     if [ $? -eq 0 ]; then
 	compiler="mcs"
     else
-	echo "compiler, scs or mcs, not found."
+	echo "compiler, csc or mcs, not found."
 	exit 1;
     fi
 fi
