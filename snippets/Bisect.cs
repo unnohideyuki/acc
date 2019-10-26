@@ -123,4 +123,16 @@ class Bisect
  }
  return lo;
     }
+    public static
+ int BisectLeft<T>(T[] a, T x, int lo=0, int hi=-1) where T:IComparable
+    {
+ if (hi < 0) hi = a.Length;
+ while (lo < hi)
+ {
+     int mid = (lo + hi) / 2;
+     if (a[mid].CompareTo(x) < 0) { lo = mid + 1; }
+     else { hi = mid; }
+ }
+ return lo;
+    }
 }
