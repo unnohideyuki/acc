@@ -12,7 +12,7 @@ class Test
 
 	double[] b = {1.0, 2.0, 3.14, 4.28, 5.01};
 	AssertEquals(2, Bisect.BisectRight(b, 3.0));
-	AssertEquals(2, Bisect.BisectRight(b, 3.0));
+	AssertEquals(2, Bisect.BisectLeft(b, 3.0));
     }
 }
 
