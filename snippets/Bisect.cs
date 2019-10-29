@@ -117,7 +117,7 @@ class Bisect
  if (hi < 0) hi = a.Length;
  while (lo < hi)
  {
-     int mid = (lo + hi) / 2;
+     int mid = lo + (hi - lo) / 2;
      if (x.CompareTo(a[mid]) < 0) { hi = mid; }
      else { lo = mid + 1; }
  }
@@ -129,7 +129,7 @@ class Bisect
  if (hi < 0) hi = a.Length;
  while (lo < hi)
  {
-     int mid = (lo + hi) / 2;
+     int mid = lo + (hi - lo) / 2;
      if (a[mid].CompareTo(x) < 0) { lo = mid + 1; }
      else { hi = mid; }
  }
